@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIDEC - Curso IA</title>
+  <link rel="stylesheet" href="cs/estilos.css" />
+</head>
+<body>
+  <div class="contenedor-aplicacion">
+    <aside class="barra-lateral">
+      <div class="encabezado-lateral">
+        <div class="insignia-logo">SIDEC</div>
+        <div class="subtitulo-logo">Sistema Interactivo de Desarrollo Etico</div>
+      </div>
+
+      <div class="tarjeta-progreso">
+        <div class="titulo-progreso">Estado del curso</div>
+        <div id="estado-general" class="indicador-estado estado-en-progreso">En progreso</div>
+        <div class="fondo-barra-progreso">
+          <div id="barra-progreso-actual" class="relleno-barra-progreso" style="width: 0%;"></div>
+        </div>
+        <div id="detalle-progreso" class="detalle-progreso">0 de 2 modulos aprobados</div>
+      </div>
+
+      <nav class="navegacion-lateral">
+        <button class="boton-navegacion activo" data-vista="vista-inicio" onclick="EvaluadorControlador.cambiarVista('vista-inicio', this)">
+          <span class="icono-navegacion">🏠</span> Inicio
+        </button>
+        <button class="boton-navegacion" data-vista="vista-guia" onclick="EvaluadorControlador.cambiarVista('vista-guia', this)">
+          <span class="icono-navegacion">💬</span> Guia y chat
+        </button>
+        <button class="boton-navegacion" data-vista="vista-ejercicios" onclick="EvaluadorControlador.cambiarVista('vista-ejercicios', this)">
+          <span class="icono-navegacion">💻</span> Ejercicios de codigo
+          <span id="indicador-modulo-dos" class="indicador-modulo">Pendiente</span>
+        </button>
+        <button class="boton-navegacion" data-vista="vista-cuestionario" onclick="EvaluadorControlador.cambiarVista('vista-cuestionario', this)">
+          <span class="icono-navegacion">📝</span> Cuestionario
+          <span id="indicador-modulo-tres" class="indicador-modulo">Pendiente</span>
+        </button>
+      </nav>
+
+      <div class="pie-lateral">
+        <button class="boton-reiniciar" onclick="EvaluadorControlador.solicitarReinicio()">↻ Reiniciar progreso</button>
+        <p class="credito-autora">Desarrollado por Wendy<br>Proyecto Final AMS</p>
+      </div>
+    </aside>
+
+    <main class="contenido-principal">
+      <section id="vista-inicio" class="seccion-vista activo">
+        <header class="bienvenida-curso">
+          <div class="texto-bienvenida">
+            <span class="etiqueta-bienvenida">PLATAFORMA DE APRENDIZAJE</span>
+            <h1>Aprende a usar la IA con seguridad</h1>
+            <p>Explora conceptos de etica, practica buenas decisiones de codigo y comprueba lo que aprendiste.</p>
+            <div class="resumen-bienvenida">
+              <span class="punto-resumen" aria-hidden="true"></span>
+              <span>Tres modulos interactivos para avanzar a tu ritmo</span>
+            </div>
+          </div>
+          <div class="ilustracion-bienvenida">
+            <svg viewBox="0 0 320 240" role="img" aria-labelledby="titulo-ilustracion">
+              <title id="titulo-ilustracion">Ilustracion de codigo protegido por un escudo</title>
+              <circle cx="160" cy="120" r="95" fill="#ede9fe" />
+              <circle cx="160" cy="120" r="76" fill="none" stroke="#c4b5fd" stroke-dasharray="3 8" stroke-linecap="round" stroke-width="2" />
+              <circle cx="67" cy="83" r="9" fill="#c4b5fd" />
+              <circle cx="260" cy="72" r="7" fill="#a78bfa" />
+              <circle cx="75" cy="171" r="6" fill="#a78bfa" />
+              <rect x="88" y="58" width="145" height="118" rx="18" fill="#fff" stroke="#ddd6fe" stroke-width="2" />
+              <rect x="104" y="76" width="34" height="5" rx="2.5" fill="#c4b5fd" />
+              <rect x="145" y="76" width="25" height="5" rx="2.5" fill="#ede9fe" />
+              <path d="m137 105-13 12 13 12m34-24 13 12-13 12m-12-29-8 34" fill="none" stroke="#7c3aed" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+              <path d="M220 130v-8c0-6 4-10 10-10s10 4 10 10v8" fill="none" stroke="#6d28d9" stroke-linecap="round" stroke-width="4" />
+              <path d="M212 128h36v29c0 12-8 20-18 25-10-5-18-13-18-25z" fill="#7c3aed" />
+              <path d="m222 147 6 6 11-13" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+            </svg>
+          </div>
+        </header>
+
+        <div id="aviso-curso-completado" class="aviso-curso-completado oculto">
+          <h2>¡Curso completado con exito!</h2>
+          <p>Has aprobado el analisis de codigo seguro y la evaluacion final.</p>
+        </div>
+
+        <div class="cuadricula-tarjetas">
+          <article class="tarjeta-modulo">
+            <div class="icono-modulo icono-guia" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 5.75A2.75 2.75 0 0 1 6.75 3h10.5A2.75 2.75 0 0 1 20 5.75v7.5A2.75 2.75 0 0 1 17.25 16H11l-5 4v-4.25A2.75 2.75 0 0 1 4 13.25z" />
+                <path d="M8 8h8M8 11.5h5" />
+              </svg>
+            </div>
+            <div class="etiqueta-tarjeta">GuiaChatTest</div>
+            <h3>Asistente Lumini</h3>
+            <p>Consulta conceptos de etica, plagio, seguridad, alucinaciones y normativas mediante reglas inteligentes.</p>
+            <button class="boton-principal" onclick="EvaluadorControlador.irAModulo('vista-guia')">Ingresar a la guia</button>
+          </article>
+
+          <article class="tarjeta-modulo">
+            <div class="icono-modulo icono-codigo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="m8 7-5 5 5 5M16 7l5 5-5 5m-2-12-4 14" />
+              </svg>
+            </div>
+            <div class="etiqueta-tarjeta">CodigosEjemplos</div>
+            <h3>Analisis de codigo</h3>
+            <p>Compara codigo inseguro sugerido por IA con codigo auditado. <strong>Tienes un maximo de dos intentos fallidos en todo el modulo.</strong></p>
+            <button class="boton-principal" onclick="EvaluadorControlador.irAModulo('vista-ejercicios')">Ingresar a la practica</button>
+          </article>
+
+          <article class="tarjeta-modulo">
+            <div class="icono-modulo icono-cuestionario" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8 4.5h8A2.5 2.5 0 0 1 18.5 7v13h-13V7A2.5 2.5 0 0 1 8 4.5z" />
+                <path d="M9 4.5V3h6v1.5M8.5 10h7M8.5 14h3m2 1 1.5 1.5L18 13.5" />
+              </svg>
+            </div>
+            <div class="etiqueta-tarjeta">QuizzTest</div>
+            <h3>Evaluacion final</h3>
+            <p>Responde el cuestionario tecnico de 10 preguntas para repasar lo aprendido.</p>
+            <button class="boton-principal" onclick="EvaluadorControlador.irAModulo('vista-cuestionario')">Ir al cuestionario</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="vista-guia" class="seccion-vista">
+        <header class="encabezado-pagina">
+          <h1>GuiaChatTest - Asistente Lumini</h1>
+          <p>Escribe una duda o una palabra clave, por ejemplo: <em>etica</em>, <em>seguridad</em>, <em>plagio</em> o <em>normatividad</em>.</p>
+        </header>
+
+        <div class="caja-chat">
+          <div class="encabezado-chat">
+            <div class="identidad-asistente">
+              <span class="avatar-asistente" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M5 8.5A3.5 3.5 0 0 1 8.5 5h7A3.5 3.5 0 0 1 19 8.5v5a3.5 3.5 0 0 1-3.5 3.5h-3l-4 3v-3.25A3.5 3.5 0 0 1 5 13.5z" />
+                  <path d="M9 10h.01M15 10h.01M9 13h6" />
+                </svg>
+              </span>
+              <strong>Asistente Lumini</strong>
+            </div>
+            <span>Activo</span>
+          </div>
+          <div id="mensajes-chat" class="mensajes-chat">
+            <div class="mensaje mensaje-asistente">
+              ¡Hola! Bienvenido/a. Soy tu asistente Lumini.<br>
+              Te doy la bienvenida a la plataforma de capacitacion en IA generativa.<br>
+              ¿Que concepto de desarrollo seguro o etica te gustaria abordar?
+            </div>
+          </div>
+          <div class="preguntas-rapidas">
+            <button onclick="EvaluadorControlador.enviarPreguntaRapida('etica')">Etica</button>
+            <button onclick="EvaluadorControlador.enviarPreguntaRapida('plagio')">Plagio</button>
+            <button onclick="EvaluadorControlador.enviarPreguntaRapida('seguridad')">Seguridad</button>
+            <button onclick="EvaluadorControlador.enviarPreguntaRapida('fuga de datos')">Fuga de datos</button>
+            <button onclick="EvaluadorControlador.enviarPreguntaRapida('alucinacion')">Alucinacion</button>
+            <button onclick="EvaluadorControlador.enviarPreguntaRapida('normatividad')">Normatividad</button>
+          </div>
+          <form class="area-entrada-chat" onsubmit="EvaluadorControlador.procesarChat(event)">
+            <input type="text" id="entrada-chat" placeholder="Escribe tu consulta aqui..." autocomplete="off" />
+            <button type="submit" class="boton-principal">Enviar</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="vista-ejercicios" class="seccion-vista">
+        <header class="encabezado-pagina">
+          <h1>CodigosEjemplos - Identificacion de malas practicas</h1>
+          <p>Revisa cada fragmento y responde. Tienes un limite de <strong>dos intentos</strong>.</p>
+        </header>
+
+        <div class="barra-estado-ejercicios">
+          <div>Caso <strong id="numero-ejercicio">1</strong> de <strong id="total-ejercicios">3</strong></div>
+          <div class="texto-intentos">
+            Intentos fallidos: <span id="intentos-fallidos" class="indicador-intentos">0 / 2</span>
+          </div>
+        </div>
+
+        <div class="tarjeta-ejercicio">
+          <h3 id="titulo-ejercicio">Cargando caso...</h3>
+          <p id="contexto-ejercicio" class="contexto-ejercicio"></p>
+
+          <div class="cuadricula-comparacion-codigo">
+            <div class="panel-codigo codigo-con-errores">
+              <div class="encabezado-panel-codigo">Codigo sugerido por IA (mala practica)</div>
+              <pre><code id="codigo-incorrecto"></code></pre>
+            </div>
+            <div class="panel-codigo codigo-correcto">
+              <div class="encabezado-panel-codigo">Codigo auditado (buena practica)</div>
+              <pre><code id="codigo-corregido"></code></pre>
+            </div>
+          </div>
+
+          <div class="caja-pregunta">
+            <h4 id="pregunta-ejercicio">Pregunta:</h4>
+            <div id="opciones-ejercicio" class="lista-opciones"></div>
+          </div>
+
+          <div id="retroalimentacion-ejercicio" class="caja-retroalimentacion oculto"></div>
+        </div>
+      </section>
+
+      <section id="vista-cuestionario" class="seccion-vista">
+        <header class="encabezado-pagina">
+          <h1>QuizzTest - Evaluacion final</h1>
+          <p>Elige la opcion correcta en cada pregunta. Necesitas al menos 80% de aciertos para aprobar.</p>
+        </header>
+
+        <form id="formulario-cuestionario" class="contenedor-cuestionario" novalidate onsubmit="EvaluadorControlador.evaluarQuizzTest(event)">
+          <div id="lista-preguntas"></div>
+          <div class="acciones-cuestionario">
+            <button type="submit" class="boton-principal boton-grande">Calificar cuestionario</button>
+          </div>
+        </form>
+
+        <div id="panel-resultados-cuestionario" class="panel-resultados oculto" aria-labelledby="titulo-resultados">
+          <div class="encabezado-resultados">
+            <div>
+              <span class="etiqueta-resultados">Tu resultado</span>
+              <h3 id="titulo-resultados">Resultados del cuestionario</h3>
+              <p id="resumen-puntuacion" class="resumen-puntuacion"></p>
+              <p id="detalle-puntuacion" class="detalle-puntuacion"></p>
+            </div>
+            <span id="estado-resultado" class="estado-resultado"></span>
+          </div>
+          <div id="barra-puntuacion-cuestionario" class="barra-puntuacion-cuestionario" role="progressbar" aria-label="Puntuación del cuestionario" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="relleno-puntuacion-cuestionario" class="relleno-puntuacion-cuestionario"></div>
+          </div>
+          <h4 class="titulo-revision">Revisión de respuestas</h4>
+          <div id="lista-revision-respuestas" class="lista-revision-respuestas"></div>
+          <details class="detalle-reporte">
+            <summary>Ver reporte de texto</summary>
+            <textarea id="reporte-cuestionario" class="reporte-texto" readonly rows="10"></textarea>
+          </details>
+          <div class="acciones-resultados">
+            <button class="boton-secundario" onclick="EvaluadorControlador.reiniciarQuizzTest()">Intentarlo de nuevo</button>
+            <button class="boton-principal" onclick="EvaluadorControlador.irAModulo('vista-inicio')">Volver al inicio</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="notificacion-emergente" class="notificacion-emergente oculto" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <dialog id="dialogo-reinicio" class="dialogo-confirmacion" aria-labelledby="titulo-dialogo-reinicio" aria-describedby="texto-dialogo-reinicio">
+    <div class="tarjeta-modal">
+      <div class="icono-modal" aria-hidden="true">↻</div>
+      <h3 id="titulo-dialogo-reinicio">¿Reiniciar el progreso?</h3>
+      <p id="texto-dialogo-reinicio">Se borrara el progreso de los ejercicios y del cuestionario. Esta accion no se puede deshacer.</p>
+      <div class="acciones-confirmacion">
+        <button type="button" class="boton-secundario" onclick="EvaluadorControlador.cancelarReinicio()">Cancelar</button>
+        <button type="button" class="boton-peligro" onclick="EvaluadorControlador.confirmarReinicio()">Si, reiniciar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="aviso-intentos-agotados" class="fondo-modal oculto">
+    <div class="tarjeta-modal">
+      <div class="icono-modal">⚠️</div>
+      <h3>Se acabaron los intentos</h3>
+      <p>Ya usaste los dos intentos fallidos en CodigosEjemplos. Al continuar, el modulo se reiniciara y volveras al inicio.</p>
+      <button class="boton-principal" onclick="EvaluadorControlador.cerrarModalYReiniciarMod2()">Volver al inicio</button>
+    </div>
+  </div>
+
+  <script src="js/ContenidoEdu.js"></script>
+  <script src="js/Guia.js"></script>
+  <script src="js/MuestraCodigos.js"></script>
+  <script src="js/Evaluador.js"></script>
+  <script src="js/EvaluadorControlador.js"></script>
+</body>
+</html>
