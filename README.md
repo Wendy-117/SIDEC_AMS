@@ -223,3 +223,7 @@ Posteriormente actualiza `this.respuestasCorr` con la letra correcta correspondi
 - El progreso se mantiene solo en el navegador actual.
 - El almacenamiento puede borrarse si el usuario limpia los datos del sitio.
 - No existe autenticacion de usuarios ni conexion con una base de datos.
+
+## Documentacion SCRUM y Jira
+
+La entrega de SCRUM, Jira, graficas, portafolio GitHub y cierre del proyecto se encuentra en [ENTREGA_SCRUM_JIRA.md](ENTREGA_SCRUM_JIRA.md). Los diagramas PlantUML estan en [diagramas/](diagramas/).
